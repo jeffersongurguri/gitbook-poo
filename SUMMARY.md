@@ -1,3 +1,3 @@
 # Table of contents
 
-* [Conceito de Objeto](README.md)
+* [Conceitos de Objeto e Classe](README.md)
