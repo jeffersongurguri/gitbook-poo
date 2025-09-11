@@ -173,5 +173,26 @@ minhaFerrari.acelerar(200);   // Método herdado de Carro
 minhaFerrari.ativarTurbo();   // Método próprio de CarroEsportivo
 ```
 
+Podemos usar diagramas para visualizar a relação entre as classes.
+
+```mermaid
+classDiagram
+  class Carro {
+    +String marca
+    +String modelo
+    +Number ano
+    +Number velocidade
+    +acelerar(incremento)
+    +frear()
+  }
+
+  class CarroEsportivo {
+    +Number potenciaTurbo
+    +ativarTurbo()
+  }
+
+  Carro <|-- CarroEsportivo : Herda de
+```
+
 
 
