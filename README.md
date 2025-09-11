@@ -29,3 +29,38 @@ Todo objeto possui duas características principais:
 * **Comportamentos (ou Métodos):** São as ações que o objeto pode realizar.
   * _Exemplo de um carro:_ acelerar, frear, ligar o farol.
 
+***
+
+### Objeto em JavaScript: A Forma Literal
+
+Em JavaScript, podemos criar um objeto de forma muito direta. Chamamos isso de "objeto literal".
+
+```javascript
+// Criando um objeto 'carro'
+const carro1 = {
+  // Atributos (Propriedades)
+  marca: "Fiat",
+  modelo: "Uno",
+  ano: 1995,
+  cor: "Vermelho",
+  velocidade: 0,
+
+  // Comportamentos (Métodos)
+  acelerar: function(incremento) {
+    this.velocidade += incremento;
+    console.log(`Acelerando! Velocidade atual: ${this.velocidade} km/h`);
+  },
+
+  frear: function() {
+    this.velocidade = 0;
+    console.log("Carro parado.");
+  }
+};
+
+// Usando o objeto
+console.log(carro1.marca); // Saída: Fiat
+carro1.acelerar(50);      // Saída: Acelerando! Velocidade atual: 50 km/h
+```
+
+
+
