@@ -84,6 +84,8 @@ A ideia central é agrupar os dados e as funções que manipulam esses dados em 
 
 Isso se chama **Encapsulamento**. Ele **"esconde" a complexidade e protege os dados**, expondo apenas operações seguras. O código passa a ser uma coleção de objetos que se comunicam entre si.
 
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
 ```mermaid
 classDiagram
   class ContaBancaria {
