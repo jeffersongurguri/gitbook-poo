@@ -78,3 +78,167 @@ const usuario = {
 * `:`: O dois-pontos separa a chave do valor.
 * `"Alice"`: É o valor (_value_) associado à chave.
 * `,`: A vírgula separa os pares de chave-valor.
+
+***
+
+### Flexibilidade dos Valores
+
+O valor de uma propriedade pode ser de qualquer tipo de dado em JavaScript!
+
+```javascript
+const perfilDev = {
+  nome: "Beto",
+  idade: 32,
+  salario: 12345.67,
+  ehAdmin: false,
+  tecnologias: ["JavaScript", "SQL", "PowerShell"], // Array
+  contato: null, // Nulo
+  // Objeto aninhado (um objeto dentro de outro)
+  endereco: {
+    cidade: "Pacatuba",
+    estado: "CE"
+  }
+};
+```
+
+***
+
+### Adicionando Comportamentos (Métodos)
+
+Quando o valor de uma propriedade é uma função, chamamos isso de método. Ele define um comportamento para o objeto.
+
+```javascript
+const saudacao = {
+  mensagem: "Olá, pessoal!",
+
+  // Método (Sintaxe moderna ES6+)
+  falar() {
+    console.log(this.mensagem);
+  },
+
+  // Método (Sintaxe tradicional)
+  mudarMensagem: function(novaMensagem) {
+    this.mensagem = novaMensagem;
+  }
+};
+
+saudacao.falar(); // Saída: Olá, pessoal!
+saudacao.mudarMensagem("Tudo bem?");
+saudacao.falar(); // Saída: Tudo bem?
+```
+
+* `this` refere-se ao próprio objeto (`saudacao`).
+
+***
+
+### Acessando Propriedades: Ponto vs. Colchetes
+
+Existem duas formas de ler o valor de uma propriedade.
+
+```javascript
+const produto = {
+  nome: "Notebook Gamer",
+  preco: 5000.00,
+  "em-estoque": true // Chave com caracteres especiais
+};
+```
+
+* 1\. Notação de Ponto (`.`): Mais comum e mais limpa.
+  * `console.log(produto.nome); // Saída: Notebook Gamer`
+* 2\. Notação de Colchetes (`[]`): Mais poderosa e flexível. A chave deve ser uma string.
+  * `console.log(produto["preco"]); // Saída: 5000.00`
+
+***
+
+### Quando Usar a Notação de Colchetes?
+
+A notação de colchetes é obrigatória em duas situações:
+
+1\. Quando a chave contém espaços, hifens ou caracteres especiais:
+
+```javascript
+// A notação de ponto falharia aqui: produto.em-estoque
+console.log(produto["em-estoque"]); // Saída: true
+```
+
+2. Quando a chave é dinâmica (vem de uma variável):
+
+```javascript
+let propriedadeDesejada = "nome";
+console.log(produto[propriedadeDesejada]); // Saída: Notebook Gamer
+
+propriedadeDesejada = "preco";
+console.log(produto[propriedadeDesejada]); // Saída: 5000.00
+```
+
+Isso é extremamente útil para acessar propriedades de forma programática.
+
+***
+
+### Modificando Objetos
+
+Objetos literais são dinâmicos. Podemos adicionar, alterar e remover propriedades a qualquer momento.
+
+```javascript
+const config = {
+  tema: "dark",
+  linguagem: "pt-br"
+};
+
+// 1. Adicionando uma nova propriedade
+config.notificacoes = true;
+console.log(config); // { tema: 'dark', linguagem: 'pt-br', notificacoes: true }
+
+// 2. Alterando uma propriedade existente
+config.tema = "light";
+console.log(config.tema); // Saída: light
+
+// 3. Removendo uma propriedade
+delete config.linguagem;
+console.log(config); // { tema: 'light', notificacoes: true }
+```
+
+***
+
+### Dica Bônus (ES6+): _Shorthand Properties_
+
+Se o nome da variável que você quer atribuir a uma propriedade é o mesmo que o nome da chave, você pode abreviar!
+
+* **Forma tradicional:**
+
+```javascript
+const nome = "Guri";
+const email = "guri@moodle.com";
+
+const professor = {
+  nome: nome,
+  email: email
+};
+```
+
+* **Com&#x20;**_**Shorthand**_**&#x20;(muito mais limpo):**
+
+```javascript
+const nome = "Guri";
+const email = "guri@moodle.com";
+
+const professor = {
+  nome, // Abreviação de nome: nome
+  email // Abreviação de email: email
+};
+
+console.log(professor.nome); // Saída: Guri
+```
+
+***
+
+### Resumo da Aula
+
+* A Notação de Objeto Literal (`{}`) é a forma mais direta de criar objetos em JS.
+* As chaves podem ser simples ou strings complexas.
+* Os valores podem ser de qualquer tipo, incluindo outros objetos e funções (métodos).
+* Use a Notação de Ponto (`.`) para acesso simples e direto.
+* Use a Notação de Colchetes (`[]`) para chaves com caracteres especiais ou para acesso dinâmico com variáveis.
+* Objetos são mutáveis: podemos adicionar, alterar e deletar propriedades facilmente.
+
+Agora, mãos ao código! Tente criar seus próprios objetos para modelar coisas do seu dia a dia.
