@@ -2,7 +2,7 @@
 
 ### O Mundo é uma Coleção de Objetos
 
-![bg left:40% 100%](https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3\&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\&auto=format\&fit=crop\&w=1172\&q=80)
+<figure><img src=".gitbook/assets/POO-class-carro.png" alt=""><figcaption></figcaption></figure>
 
 Olá, pessoal!
 
@@ -178,16 +178,16 @@ Podemos usar diagramas para visualizar a relação entre as classes.
 ```mermaid
 classDiagram
   class Carro {
-    +String marca
-    +String modelo
-    +Number ano
-    +Number velocidade
-    +acelerar(incremento)
+    +marca: String 
+    +modelo: String 
+    +ano: Number
+    +velocidade: Number
+    +acelerar(incremento: Number)
     +frear()
   }
 
   class CarroEsportivo {
-    +Number potenciaTurbo
+    +potenciaTurbo: Number
     +ativarTurbo()
   }
 
