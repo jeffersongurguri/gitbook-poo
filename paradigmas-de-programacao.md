@@ -25,7 +25,7 @@ graph TD
 
 _Um fluxo caótico e difícil de seguir._
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -33,7 +33,7 @@ _Um fluxo caótico e difícil de seguir._
 
 Para combater o caos, surgiu a **Programação Estruturada**. A regra era clara: **abolir o `GOTO`**!
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 O foco passou a ser em um fluxo de controle lógico e previsível, baseado em três estruturas fundamentais:
 
@@ -84,7 +84,7 @@ A ideia central é agrupar os dados e as funções que manipulam esses dados em 
 
 Isso se chama **Encapsulamento**. Ele **"esconde" a complexidade e protege os dados**, expondo apenas operações seguras. O código passa a ser uma coleção de objetos que se comunicam entre si.
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 ```mermaid
 classDiagram

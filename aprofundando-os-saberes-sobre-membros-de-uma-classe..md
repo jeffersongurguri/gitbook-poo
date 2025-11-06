@@ -25,7 +25,7 @@ class Veiculo {
 }
 ```
 
-<figure><img src=".gitbook/assets/image (3).png" alt="" width="160"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (4).png" alt="" width="160"><figcaption></figcaption></figure>
 
 Na modelagem (projeto) de nossa classe `Veiculo`, características como: modelo, cor, ano de fabricação, placa etc. são informações que precisam ser armazenadas, representando as características do veículo. Nesse momento, estamos pensando em \*\*Atributos\*\*.
 
@@ -64,4 +64,69 @@ class Veiculo {
 
 
 
-Sintaxe para atributos em Javascript
+Sobre a sintaxe de declaração de atributos, podemos ainda definir que nossos veículos irão começar, salvo outras alterações, com valores padrões de modelo e cor. Para tal utilizamores a sintaxe:
+
+```javascript
+class Veiculo {
+    modelo = "Honda HB20";
+    cor = "branco";
+    anoDeFabricacao;
+    placa;
+    
+    // ...
+}
+
+
+```
+
+### Como criar objetos a partir de Classes?
+
+Para criar **novos** objetos a partir de **classes**, processo que chamamos de instanciação de objetos, utilizamos a sintaxe:
+
+```javascript
+let novoObjetoVeiculo = new Veiculo();
+```
+
+Aqui observamos uma nova palavra-chave da linguagem Javascript, o `new` , seguido de uma chamada a uma função construtora (o construtor da classe, _veremos com mais detalhes a frente_) com o mesmo nome da classe que criamos `Veiculo` . Nessa chamada ao construtor da classe `Veiculo` não estamos passando nenhum argumento.&#x20;
+
+Vamos criar alguns objetos utilizando a classe `Veiculo` para nos aquecer um pouco.
+
+<figure><img src=".gitbook/assets/image (1).png" alt="" width="188"><figcaption></figcaption></figure>
+
+```javascript
+let gol = new Veiculo();
+gol.modelo = "Gol Quadrado";
+gol.cor = "vermelho";
+gol.ano = 1995;
+gol.placa = "FUI1995";
+```
+
+<figure><img src=".gitbook/assets/image (2).png" alt="" width="135"><figcaption></figcaption></figure>
+
+```javascript
+let fusca = new Veiculo();
+fusca.modelo = "Fusca";
+fusca.cor = "azul";
+fusca.ano = 1988;
+fusca.placa = "XAU2000";
+
+```
+
+Observe que após instanciado um objeto e armazenado em uma variável, podemos acessar ( seja para leitura ou escrita) os atributos do objeto através da notação:
+
+```
+<variavel-associada-ao-objeto>.<nome-do-atributo>
+```
+
+### Visualização padrão de um objeto
+
+Em Javascript, a representação padrão de um objeto, é dada pela exibição de seus atributos. Por exemplo, ao enviarmos o objeto associado a variável `fusca` ao método `console.log(...)` , ou seja `console.log(fusca)`, teríamos:
+
+```json
+Veiculo {
+  modelo: 'Fusca',
+  cor: 'azul',
+  ano: 1988,
+  placa: 'XAU2000'
+}
+```
