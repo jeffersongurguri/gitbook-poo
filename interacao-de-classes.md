@@ -86,3 +86,7 @@ CalculadoraDeSeguro --> Veiculo
 ```
 
 Isso ilustra como a interação entre classes cria um grau de acoplamento entre elas. O objetivo é gerenciar essa dependência para mantê-la a mais fraca possível.
+
+{% hint style="success" %}
+Analogia: O acoplamento pode ser comparado a dois vagões de trem. Se eles estiverem ligados por um único e robusto gancho (alto acoplamento), se um vagão descarrilar, o outro será puxado junto e ambos quebrarão. Se eles estiverem levemente ligados e puderem se mover de forma relativamente independente (baixo acoplamento), o descarrilamento de um causará menos dano ao outro. O baixo acoplamento nos permite trocar ou consertar um vagão sem ter que parar o sistema inteiro.
+{% endhint %}
