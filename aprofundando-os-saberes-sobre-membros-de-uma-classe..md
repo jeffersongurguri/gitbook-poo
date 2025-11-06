@@ -242,3 +242,89 @@ Quando o método é invocado (exemplo: `fusca.gerarRelatorio()`), o `this` assum
 Portanto, o **this** é fundamental para garantir que, ao executar um método, o objeto esteja interagindo com os dados que ele mesmo armazena, e não com os dados de outras instâncias da mesma classe.&#x20;
 
 Enquanto acessamos os atributos de fora do objeto usando a sintaxe `gol.modelo`, internamente, dentro da definição do método, o objeto se refere a si mesmo usando `this.modelo` .
+
+
+
+### O Construtor: Inicializando o Objeto
+
+Até agora, aprendemos que o processo de criação de novos objetos a partir de classes é chamado de instanciação e utiliza a palavra-chave `new`:
+
+```javascript
+let novoObjetoVeiculo = new Veiculo();
+```
+
+Essa sintaxe (`new Veiculo()`) é, na verdade, uma chamada a uma função construtora da classe, que possui o mesmo nome dela, embora não tenhamos detalhado seu funcionamento.
+
+#### Definição do Construtor
+
+O Construtor é um **tipo especial de método de uma classe** que é **executado automaticamente** toda vez que uma nova instância do objeto é criada utilizando a palavra-chave `new` .
+
+{% hint style="warning" %}
+Ele não precisa ser explicitamente chamado pelo desenvolvedor, pois o próprio processo de instanciação o aciona.
+{% endhint %}
+
+#### **Utilidade e Propósito**
+
+A principal utilidade do Construtor é garantir que o objeto, ao ser criado, esteja em um **estado válido** imediatamente. Ele é o responsável por:
+
+1\. Inicializar os Atributos: O construtor recebe parâmetros (dados) e os utiliza para definir os valores iniciais dos atributos do objeto.
+
+2\. Centralizar a Criação: Ele permite que a passagem dos dados (características como `modelo`, `cor`, `placa`) seja feita no exato momento da criação, eliminando a necessidade de atribuir valor a cada atributo manualmente após a instanciação (como fizemos anteriormente).
+
+Lembramos que, para acessar e manipular os próprios atributos dentro de um método (incluindo o construtor), utilizamos a palavra-chave **this**, configurando a autorreferência.
+
+Exemplo Prático: Construtor na Classe `Veiculo`
+
+Anteriormente, criávamos objetos e atribuíamos valores em múltiplas linhas:
+
+```javascript
+let gol = new Veiculo(); 
+gol.modelo = "Gol Quadrado"; 
+gol.cor = "vermelho"; 
+// ...
+```
+
+Ao adicionar um construtor, podemos passar todos os dados relevantes em uma única linha, tornando a classe mais robusta:
+
+```javascript
+class Veiculo {
+   modelo;
+   cor;
+   anoDeFabricacao;
+   placa;
+
+   // O CONSTRUTOR é definido. Ele recebe argumentos (parametros)
+   // que serão usados para inicializar os atributos do objeto.
+   constructor(modeloRecebido, corRecebida, anoRecebido, placaRecebida) {
+      // Usamos o 'this' para fazer a autorreferência e atribuir os 
+      // parâmetros recebidos aos atributos internos da instância.
+      this.modelo = modeloRecebido; 
+      this.cor = corRecebida;
+      this.anoDeFabricacao = anoRecebido;
+      this.placa = placaRecebida;
+   }
+   
+   // ... (Métodos como gerarRelatorio())
+}
+```
+
+**Instanciação Usando o Construtor**
+
+\
+Agora, o processo de instanciação é muito mais direto e exige que os dados sejam fornecidos no momento da chamada do construtor:
+
+```javascript
+// O construtor é chamado automaticamente e recebe os argumentos
+let gol = new Veiculo("Gol Quadrado", "vermelho", 1995, "FUI1995"); 
+let fusca = new Veiculo("Fusca", "azul", 1988, "XAU2000"); 
+
+// O objeto 'gol' já está pronto e com todos os seus atributos inicializados.
+console.log(gol.modelo); // Resultado: Gol Quadrado
+```
+
+O construtor transforma o ato de criar um objeto em um processo coeso e completo, garantindo que, assim que a instância existe, ela já possui suas características definidas.
+
+{% hint style="success" %}
+Analogia: Se a Classe é uma fábrica de veiculos, a chamada `new Veiculo()` sem um construtor é como ir construindo o veiculo manualmente, decisão a decisão, peça a peça. Com o Construtor, você passa tudo o que deve ser feito (os parâmetros) no início, e a chamda a (`new Veiculo(...)`) já entrega o veículo pronto.
+{% endhint %}
+
