@@ -31,6 +31,8 @@ Na modelagem (projeto) de nossa classe `Veiculo`, características como: modelo,
 
 > **"Atributo** é o elemento de uma classe, responsável por definir sua estrutura de dados. O conjunto destes será responsável por representar as características e farão parte dos objetos criados a partir da classe."
 
+
+
 Vamos adicionar alguns atributos a nossa class `Veiculo`
 
 ```javascript
@@ -130,3 +132,113 @@ Veiculo {
   placa: 'XAU2000'
 }
 ```
+
+### Aprofundando o Conceito de Método
+
+Se os Atributos são os elementos de uma classe responsáveis por definir a estrutura de dados e representar as características que os objetos podem armazenar — como `modelo` ou `cor` — os Métodos definem o que o objeto faz.
+
+Em termos formais, os métodos são responsáveis por definir o comportamento de seus objetos. Uma classe define os serviços providos por seus objetos através de métodos.
+
+> **Método** é um porção de código que é disponibilizada pela classe. Este é executado quando é feita uma requisição a ele. Um método serve para identificar quais serviços, ações, que a classe oferece. Eles são responsáveis por definir e realizar um determinado comportamento.
+
+Para facilitar o processo de identificação dos métodos, quando estamos pensando sobre como modelar o sistema, podemos pensar em **verbos** isso ocorre devido à sua própria definição: ações. Ou seja, quando se pensa nas ações que uma classe venha a oferecer, ela identifica seus métodos.
+
+No processo de definição de um método, a sua **assinatura** deve ser identificada.
+
+{% hint style="info" %}
+**Assinatura** nada mais é do que o nome do método e sua lista de parâmetros.
+{% endhint %}
+
+**Exemplo Prático:**&#x43;riando um Relatório do Veículo.
+
+Para ilustrar o conceito de método, vamos adicionar à nossa classe `Veiculo` um comportamento que é relevante para o sistema de controle da seguradora: a capacidade de gerar um relatório ou uma descrição completa dos seus dados.
+
+Este método utilizará as informações armazenadas nos atributos (`modelo`, `cor`, `anoDeFabricacao`, `placa`)para executar uma ação específica (neste caso, retornar uma _string_ formatada).
+
+
+
+Relembrando a sintaxe da classe `Veiculo`:
+
+```javascript
+// Criação de uma classe Veículo 
+class Veiculo {
+   modelo;
+   cor;
+   anoDeFabricacao;
+   placa;
+   // Seção de definição dos métodos.
+   // ...
+}
+```
+
+Adicionando o método `gerarRelatorio()`:
+
+```javascript
+class Veiculo {
+   modelo;
+   cor;
+   anoDeFabricacao;
+   placa;
+
+   // Seção de definição dos métodos.
+   gerarRelatorio() {
+      // O 'this' refere-se à instância atual do objeto (ex: o objeto 'fusca' ou 'gol' [6])
+      let relatorio = `
+      --- RELATÓRIO DO VEÍCULO ---
+      Modelo: ${this.modelo}
+      Cor: ${this.cor}
+      Ano: ${this.anoDeFabricacao}
+      Placa: ${this.placa}
+      `;
+      return relatorio;
+   }
+}
+```
+
+Ao instanciar objetos a partir desta classe e atribuir valores aos seus atributos, podemos invocar o método `gerarRelatorio()` para acessar este novo serviço:
+
+```javascript
+let fusca = new Veiculo();
+fusca.modelo = "Fusca";
+fusca.cor = "azul";
+fusca.anoDeFabricacao = 1988;
+fusca.placa = "XAU2000";
+
+// Chamando o método para executar o comportamento
+console.log(fusca.gerarRelatorio()); 
+
+// Resultado no console seria:
+/*
+--- RELATÓRIO DO VEÍCULO ---
+Modelo: Fusca
+Cor: azul
+Ano: 1988
+Placa: XAU2000
+*/
+```
+
+Dessa forma, o método transforma o conjunto de dados armazenados nos atributos do objeto em um serviço útil para o **negócio**.
+
+{% hint style="success" %}
+Analogia: Se uma Classe é o projeto de um robô, os Atributos são as especificações de suas peças (cor do chassi, tipo de bateria), e os Métodos são os comandos que definem o que o robô é capaz de fazer, como "andar", "falar" ou "gerar um relatório".
+{% endhint %}
+
+### A Palavra-Chave `this` e o Conceito de Autorreferência
+
+Ao observar o código do método `gerarRelatorio()`  percebemos o uso da palavra-chave `this` .
+
+O que é o **this**?
+
+A palavra-chave **this** é um mecanismo essencial dentro da Programação Orientada a Objetos, especialmente quando definimos Métodos. Dentro do contexto de um método, o **this** refere-se à instância atual do objeto que está executando aquele método (por exemplo, o objeto `fusca` ou o objeto `gol`) .
+
+O uso do `this` configura o que chamamos de **autorreferência**.
+
+A autorreferência permite que um objeto, a partir de seu próprio método, acesse e manipule os seus próprios atributos e defina o seu comportamento.
+
+Quando você define a Classe Veiculo, você está dizendo: "Todo veículo que for criado terá um atributo `modelo` e um método `gerarRelatorio()`"
+
+Quando o método é invocado (exemplo: `fusca.gerarRelatorio()`), o `this` assume a identidade daquela instância específica (o `fusca`), garantindo que o método acesse os atributos corretos (como `this.modelo`, que será "Fusca")
+
+Portanto, o **this** é fundamental para garantir que, ao executar um método, o objeto esteja interagindo com os dados que ele mesmo armazena, e não com os dados de outras instâncias da mesma classe.&#x20;
+
+Enquanto acessamos os atributos de fora do objeto usando a sintaxe `gol.modelo`, internamente, dentro da definição do método, o objeto se refere a si mesmo usando `this.modelo` .
