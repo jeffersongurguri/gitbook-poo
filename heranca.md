@@ -32,7 +32,35 @@ A classe `Veiculo` se torna a Classe Base ou Superclasse. As classes `Carro` e `
 
 \==IMAGEM SOBRE GENERALIZAÇÃO E ESPECIALIZAÇÃO==
 
-\==DIAGRAMA UML==
+```mermaid
+classDiagram
+    direction TB
+    
+    class Veiculo {
+        +modelo
+        ++cor
+        +anoDeFabricacao
+        +placa
+        +gerarRelatorio()
+    }
+    
+    class Carro {
+        +numeroDePortas
+        +constructor(modelo, cor, ano, placa, portas)
+    }
+    
+    class Moto {
+        +cilindrada
+        +constructor(modelo, cor, ano, placa, cilindrada)
+    }
+    
+    Veiculo <|-- Carro : É-UM (Herda)
+    Veiculo <|-- Moto : É-UM (Herda)
+    
+    note for Veiculo "Classe Base: Compartilha atributos gerais (modelo, cor, placa)"
+    note for Carro "Especialização: Adiciona númeroDePortas"
+    note for Moto "Especialização: Adiciona cilindrada"
+```
 
 ### **Sintaxe da Herança no JavaScript Moderno**
 
