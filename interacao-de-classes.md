@@ -40,7 +40,8 @@ class Veiculo {
 
 Classe 2: `CalculadoraDeSeguro` (Nova) Esta classe terá um método (`calcularPremio`) que aceita um objeto `Veiculo` como parâmetro e usa as informações dele para realizar o cálculo.
 
-```
+{% code lineNumbers="true" %}
+```javascript
 class CalculadoraDeSeguro {
    
    // Este método recebe uma instância da classe Veiculo
@@ -57,6 +58,7 @@ class CalculadoraDeSeguro {
    }
 }
 ```
+{% endcode %}
 
 Para atingir o propósito de calcular o seguro, as classes interagem no código principal:
 
@@ -119,6 +121,7 @@ Para simular o processo de Emissão de uma Apólice de Seguro, utilizaremos o se
 2. **CalculadoraDeSeguro (A Entidade de Serviço)**: O objeto que fornece um serviço específico (o cálculo do prêmio).
 3. **GerenciadorDeApolice (A Entidade Orquestradora)**: A nova classe orquestradora que une os dados ao serviço para entregar o resultado final.
 
+{% code lineNumbers="true" %}
 ```javascript
 class GerenciadorDeApolice {
 
@@ -136,8 +139,8 @@ class GerenciadorDeApolice {
         let relatorioApolice = `
         -------------------------------------------
         APÓLICE Nº ${numeroApolice} EMITIDA
-        Modelo: ${resultadoCalculo.modelo} (${resultadoCalculo.ano})
-        Valor do Prêmio: R$ ${resultadoCalculo.valorPremio},00
+        Modelo: ${veiculo.modelo} (${veiculo.anoDeFabricacao})
+        Valor do Prêmio: R$ ${resultadoCalculo},00
         -------------------------------------------
         `;
         // O método transforma o conjunto de dados em um serviço útil para o negócio [19, 20]
@@ -145,6 +148,7 @@ class GerenciadorDeApolice {
     }
 }
 ```
+{% endcode %}
 
 **O Fluxo de Execução com Três Classes**
 
