@@ -90,3 +90,116 @@ Isso ilustra como a interação entre classes cria um grau de acoplamento entre 
 {% hint style="success" %}
 Analogia: O acoplamento pode ser comparado a dois vagões de trem. Se eles estiverem ligados por um único e robusto gancho (alto acoplamento), se um vagão descarrilar, o outro será puxado junto e ambos quebrarão. Se eles estiverem levemente ligados e puderem se mover de forma relativamente independente (baixo acoplamento), o descarrilamento de um causará menos dano ao outro. O baixo acoplamento nos permite trocar ou consertar um vagão sem ter que parar o sistema inteiro.
 {% endhint %}
+
+### Interação de Três Classes: Orquestrando o Processo de Negócio
+
+Após compreendermos a interação básica e o acoplamento entre duas classes, vamos expandir nosso cenário para um exemplo prático que simula o fluxo completo de um **processo de negócio** em nossa seguradora.&#x20;
+
+{% hint style="info" %}
+**Processo de Negócio (ou&#x20;**_**Business Process**_**)** é uma coleção de atividades estruturadas e inter-relacionadas, executadas por pessoas, sistemas ou ambos, que, ao serem completadas, produzem um produto ou serviço específico de valor para um cliente (interno ou externo) ou para atingir um objetivo organizacional.
+{% endhint %}
+
+No desenvolvimento de software, os termos **Processos de Negócio** e **Regras de Negócio** fazem parte do vocabulário técnico.
+
+{% hint style="info" %}
+Do ponto de vista prático do desenvolvimento, uma **Regra de Negócio** é:
+
+Uma função, método, classe ou conjunto de instruções de código que encapsula uma política ou restrição organizacional, garantindo que o sistema atenda aos requisitos do negócio e mantenha a consistência dos dados e do fluxo de trabalho.
+{% endhint %}
+
+Em um sistema real de Programação Orientada a Objetos (POO), é comum que uma classe atue como **orquestradora**, centralizando a lógica e definindo a sequência de ações que devem ser executadas utilizando os serviços e dados de outras classes .
+
+Para simular o processo de Emissão de uma Apólice de Seguro, utilizaremos o seguinte conjunto de classes:
+
+1. **Veiculo (A Entidade de Dados)**: O objeto que armazena as características (dados).
+2. **CalculadoraDeSeguro (A Entidade de Serviço)**: O objeto que fornece um serviço específico (o cálculo do prêmio).
+3. **GerenciadorDeApolice (A Entidade Orquestradora)**: A nova classe orquestradora que une os dados ao serviço para entregar o resultado final.
+
+```javascript
+class GerenciadorDeApolice {
+
+    // Método que centraliza a lógica de negócio completa
+    emitirApolice(veiculo) {
+        // 1. Instancia o objeto de serviço necessário
+        let calculadora = new CalculadoraDeSeguro(); 
+
+        // 2. O Gerenciador utiliza o serviço, passando o objeto Veiculo como argumento
+        let resultadoCalculo = calculadora.calcularPremio(veiculo); 
+
+        // 3. Processa e retorna o resultado final
+        let numeroApolice = Math.floor(Math.random() * 10000); // Simulação de um novo dado
+        
+        let relatorioApolice = `
+        -------------------------------------------
+        APÓLICE Nº ${numeroApolice} EMITIDA
+        Modelo: ${resultadoCalculo.modelo} (${resultadoCalculo.ano})
+        Valor do Prêmio: R$ ${resultadoCalculo.valorPremio},00
+        -------------------------------------------
+        `;
+        // O método transforma o conjunto de dados em um serviço útil para o negócio [19, 20]
+        return relatorioApolice;
+    }
+}
+```
+
+**O Fluxo de Execução com Três Classes**
+
+baixo, demonstramos como o código principal do sistema utiliza a classe orquestradora para realizar uma tarefa complexa de forma encapsulada:
+
+```javascript
+// 1. Instanciamos um Veículo (objeto de dados), usando o construtor [12, 21]
+let fusca = new Veiculo("Fusca", "azul", 1988, "XAU2000"); 
+
+// 2. Instanciamos o Gerenciador (o orquestrador)
+let gerenciador = new GerenciadorDeApolice();
+
+// 3. Chamamos o método orquestrador, passando o Veículo
+let apolice = gerenciador.emitirApolice(fusca);
+
+console.log(apolice);
+// Resultado (Exemplo, supondo que 1988 é < 2000, logo o valor é reduzido em 500) [16]:
+/*
+-------------------------------------------
+APÓLICE Nº [Número Aleatório] EMITIDA
+Modelo: Fusca (1988)
+Valor do Prêmio: R$ 500,00
+-------------------------------------------
+*/
+```
+
+```mermaid
+sequenceDiagram
+    participant User as Sistema Principal
+    participant GA as :GerenciadorDeApolice
+    participant Calc as :CalculadoraDeSeguro
+    participant V as :Veiculo (fusca)
+
+    User->>V: 1. new Veiculo("Fusca", ...)
+    note right of V: Instanciação do Objeto de Dados, ativando o Construtor [9, 10].
+
+    User->>GA: 2. new GerenciadorDeApolice()
+    note right of GA: Instancia o Orquestrador.
+
+    User->>GA: 3. emitirApolice(fusca)
+    note right of GA: Inicia o serviço principal de negócio.
+
+    activate GA
+        GA->>Calc: 4. new CalculadoraDeSeguro()
+        note right of Calc: O Gerenciador cria o objeto de serviço de cálculo.
+
+        GA->>Calc: 5. calcularPremio(veiculo: fusca)
+        note right of Calc: O Gerenciador passa o objeto de Dados (fusca) como parâmetro para o serviço [11].
+
+        activate Calc
+            Calc->>V: 6. Acessa veiculo.anoDeFabricacao
+            note right of V: Leitura de atributo para definir a regra de negócio. Demonstra Acoplamento [12, 13].
+            
+            Calc-->>GA: 7. Retorna {modelo, ano, valorPremio}
+            note left of Calc: Retorno do serviço de cálculo.
+        deactivate Calc
+        
+        note right of GA: 8. Processa o resultado e gera o Relatório Final (Apólice).
+        
+        GA-->>User: 9. Retorna relatorioApolice (String formatada)
+    deactivate GA
+```
