@@ -7,3 +7,4 @@
 * [Implementando uma To-do list (Gerenciador de Tarefas)](implementando-uma-to-do-list-gerenciador-de-tarefas.md)
 * [Aprofundando os saberes sobre Membros de uma classe](aprofundando-os-saberes-sobre-membros-de-uma-classe.md)
 * [Interação de Classes](interacao-de-classes.md)
+* [Herança](heranca.md)

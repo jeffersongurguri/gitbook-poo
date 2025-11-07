@@ -74,6 +74,10 @@ console.log(premio);
 // Resultado: O prêmio do seguro para o Fusca é R$ 500.
 ```
 
+<figure><img src=".gitbook/assets/sequence-interaction-2.png" alt=""><figcaption></figcaption></figure>
+
+**Acoplamento**
+
 Neste exemplo, a classe `CalculadoraDeSeguro` está **acoplada** à classe `Veiculo`.&#x20;
 
 Ela precisa saber que `Veiculo` possui um atributo chamado `anoDeFabricacao` para poder executar seu método `calcularPremio`.
@@ -167,39 +171,8 @@ Valor do Prêmio: R$ 500,00
 */
 ```
 
-```mermaid
-sequenceDiagram
-    participant User as Sistema Principal
-    participant GA as :GerenciadorDeApolice
-    participant Calc as :CalculadoraDeSeguro
-    participant V as :Veiculo (fusca)
+<figure><img src=".gitbook/assets/diagrama-de-sequencia-interacao-3.svg" alt=""><figcaption></figcaption></figure>
 
-    User->>V: 1. new Veiculo("Fusca", ...)
-    note right of V: Instanciação do Objeto de Dados, ativando o Construtor [9, 10].
+<figure><img src=".gitbook/assets/sequence-interaction-3.png" alt=""><figcaption></figcaption></figure>
 
-    User->>GA: 2. new GerenciadorDeApolice()
-    note right of GA: Instancia o Orquestrador.
-
-    User->>GA: 3. emitirApolice(fusca)
-    note right of GA: Inicia o serviço principal de negócio.
-
-    activate GA
-        GA->>Calc: 4. new CalculadoraDeSeguro()
-        note right of Calc: O Gerenciador cria o objeto de serviço de cálculo.
-
-        GA->>Calc: 5. calcularPremio(veiculo: fusca)
-        note right of Calc: O Gerenciador passa o objeto de Dados (fusca) como parâmetro para o serviço [11].
-
-        activate Calc
-            Calc->>V: 6. Acessa veiculo.anoDeFabricacao
-            note right of V: Leitura de atributo para definir a regra de negócio. Demonstra Acoplamento [12, 13].
-            
-            Calc-->>GA: 7. Retorna {modelo, ano, valorPremio}
-            note left of Calc: Retorno do serviço de cálculo.
-        deactivate Calc
-        
-        note right of GA: 8. Processa o resultado e gera o Relatório Final (Apólice).
-        
-        GA-->>User: 9. Retorna relatorioApolice (String formatada)
-    deactivate GA
-```
+<figure><img src=".gitbook/assets/diagrama-de-sequencia-interacao-3.svg" alt=""><figcaption></figcaption></figure>

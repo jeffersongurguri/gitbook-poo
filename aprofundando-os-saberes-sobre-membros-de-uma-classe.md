@@ -1,4 +1,4 @@
-# Aprofundando os saberes sobre Membros de uma classe.
+# Aprofundando os saberes sobre Membros de uma classe
 
 Em sala presencial, trabalhos os conceitos de **Classe, Atributos e Métodos.**
 
@@ -14,6 +14,7 @@ O conceito de `Veiculo` deve ser compreendido pelo sistema. Nós como desenvolve
 
 A sintaxe de criação de criação de Classes em Javascript (ES5+), é seguinte:
 
+{% code lineNumbers="true" %}
 ```javascript
 // Criação de uma classe Veículo
 class Veiculo {
@@ -24,6 +25,7 @@ class Veiculo {
     // ...
 }
 ```
+{% endcode %}
 
 <figure><img src=".gitbook/assets/image (4).png" alt="" width="160"><figcaption></figcaption></figure>
 
@@ -35,6 +37,7 @@ Na modelagem (projeto) de nossa classe `Veiculo`, características como: modelo,
 
 Vamos adicionar alguns atributos a nossa class `Veiculo`
 
+{% code lineNumbers="true" %}
 ```javascript
 // Criação de uma classe Veículo
 class Veiculo {
@@ -47,6 +50,7 @@ class Veiculo {
     // ...
 }
 ```
+{% endcode %}
 
 {% hint style="warning" %}
 Não há declarações explícitas de tipos aos atributos em JavaScript, lembre-se que o JS é uma linguagem de tipagem fraca e dinâmica.
@@ -68,6 +72,7 @@ class Veiculo {
 
 Sobre a sintaxe de declaração de atributos, podemos ainda definir que nossos veículos irão começar, salvo outras alterações, com valores padrões de modelo e cor. Para tal utilizamores a sintaxe:
 
+{% code lineNumbers="true" %}
 ```javascript
 class Veiculo {
     modelo = "Honda HB20";
@@ -80,6 +85,7 @@ class Veiculo {
 
 
 ```
+{% endcode %}
 
 ### Como criar objetos a partir de Classes?
 
@@ -95,6 +101,7 @@ Vamos criar alguns objetos utilizando a classe `Veiculo` para nos aquecer um pou
 
 <figure><img src=".gitbook/assets/image (1).png" alt="" width="188"><figcaption></figcaption></figure>
 
+{% code lineNumbers="true" %}
 ```javascript
 let gol = new Veiculo();
 gol.modelo = "Gol Quadrado";
@@ -102,9 +109,11 @@ gol.cor = "vermelho";
 gol.ano = 1995;
 gol.placa = "FUI1995";
 ```
+{% endcode %}
 
 <figure><img src=".gitbook/assets/image (2).png" alt="" width="135"><figcaption></figcaption></figure>
 
+{% code lineNumbers="true" %}
 ```javascript
 let fusca = new Veiculo();
 fusca.modelo = "Fusca";
@@ -113,6 +122,7 @@ fusca.ano = 1988;
 fusca.placa = "XAU2000";
 
 ```
+{% endcode %}
 
 Observe que após instanciado um objeto e armazenado em uma variável, podemos acessar ( seja para leitura ou escrita) os atributos do objeto através da notação:
 
@@ -124,6 +134,7 @@ Observe que após instanciado um objeto e armazenado em uma variável, podemos a
 
 Em Javascript, a representação padrão de um objeto, é dada pela exibição de seus atributos. Por exemplo, ao enviarmos o objeto associado a variável `fusca` ao método `console.log(...)` , ou seja `console.log(fusca)`, teríamos:
 
+{% code lineNumbers="true" %}
 ```json
 Veiculo {
   modelo: 'Fusca',
@@ -132,6 +143,7 @@ Veiculo {
   placa: 'XAU2000'
 }
 ```
+{% endcode %}
 
 ### Aprofundando o Conceito de Método
 
@@ -159,6 +171,7 @@ Este método utilizará as informações armazenadas nos atributos (`modelo`, `c
 
 Relembrando a sintaxe da classe `Veiculo`:
 
+{% code lineNumbers="true" %}
 ```javascript
 // Criação de uma classe Veículo 
 class Veiculo {
@@ -170,9 +183,11 @@ class Veiculo {
    // ...
 }
 ```
+{% endcode %}
 
 Adicionando o método `gerarRelatorio()`:
 
+{% code lineNumbers="true" %}
 ```javascript
 class Veiculo {
    modelo;
@@ -194,9 +209,11 @@ class Veiculo {
    }
 }
 ```
+{% endcode %}
 
 Ao instanciar objetos a partir desta classe e atribuir valores aos seus atributos, podemos invocar o método `gerarRelatorio()` para acessar este novo serviço:
 
+{% code lineNumbers="true" %}
 ```javascript
 let fusca = new Veiculo();
 fusca.modelo = "Fusca";
@@ -216,6 +233,7 @@ Ano: 1988
 Placa: XAU2000
 */
 ```
+{% endcode %}
 
 Dessa forma, o método transforma o conjunto de dados armazenados nos atributos do objeto em um serviço útil para o **negócio**.
 
@@ -249,9 +267,11 @@ Enquanto acessamos os atributos de fora do objeto usando a sintaxe `gol.modelo`,
 
 Até agora, aprendemos que o processo de criação de novos objetos a partir de classes é chamado de instanciação e utiliza a palavra-chave `new`:
 
+{% code lineNumbers="true" %}
 ```javascript
 let novoObjetoVeiculo = new Veiculo();
 ```
+{% endcode %}
 
 Essa sintaxe (`new Veiculo()`) é, na verdade, uma chamada a uma função construtora da classe, que possui o mesmo nome dela, embora não tenhamos detalhado seu funcionamento.
 
@@ -277,15 +297,18 @@ Exemplo Prático: Construtor na Classe `Veiculo`
 
 Anteriormente, criávamos objetos e atribuíamos valores em múltiplas linhas:
 
+{% code lineNumbers="true" %}
 ```javascript
 let gol = new Veiculo(); 
 gol.modelo = "Gol Quadrado"; 
 gol.cor = "vermelho"; 
 // ...
 ```
+{% endcode %}
 
 Ao adicionar um construtor, podemos passar todos os dados relevantes em uma única linha, tornando a classe mais robusta:
 
+{% code lineNumbers="true" %}
 ```javascript
 class Veiculo {
    modelo;
@@ -307,12 +330,14 @@ class Veiculo {
    // ... (Métodos como gerarRelatorio())
 }
 ```
+{% endcode %}
 
 **Instanciação Usando o Construtor**
 
 \
 Agora, o processo de instanciação é muito mais direto e exige que os dados sejam fornecidos no momento da chamada do construtor:
 
+{% code lineNumbers="true" %}
 ```javascript
 // O construtor é chamado automaticamente e recebe os argumentos
 let gol = new Veiculo("Gol Quadrado", "vermelho", 1995, "FUI1995"); 
@@ -321,6 +346,7 @@ let fusca = new Veiculo("Fusca", "azul", 1988, "XAU2000");
 // O objeto 'gol' já está pronto e com todos os seus atributos inicializados.
 console.log(gol.modelo); // Resultado: Gol Quadrado
 ```
+{% endcode %}
 
 O construtor transforma o ato de criar um objeto em um processo coeso e completo, garantindo que, assim que a instância existe, ela já possui suas características definidas.
 
@@ -328,3 +354,73 @@ O construtor transforma o ato de criar um objeto em um processo coeso e completo
 Analogia: Se a Classe é uma fábrica de veiculos, a chamada `new Veiculo()` sem um construtor é como ir construindo o veiculo manualmente, decisão a decisão, peça a peça. Com o Construtor, você passa tudo o que deve ser feito (os parâmetros) no início, e a chamda a (`new Veiculo(...)`) já entrega o veículo pronto.
 {% endhint %}
 
+#### O Construtor e o Auxílio ao Encapsulamento
+
+\
+O **Encapsulamento** é um dos pilares da Programação Orientada a Objetos, focado em agrupar os dados (atributos) e os métodos que operam sobre esses dados, limitando o acesso direto à estrutura interna.&#x20;
+
+O Construtor desempenha um papel essencial nesse princípio, atuando como o guardião da integridade do objeto desde o momento de sua criação.\
+Lembre-se que atributos são os elementos de uma classe responsáveis por definir a estrutura de dados e representar as características que os objetos podem armazena.
+
+Se permitirmos a criação de um objeto sem o construtor preenchido, somos forçados a atribuir os valores a cada atributo manualmente após a instanciação.
+
+O construtor força a definição dos dados essenciais no exato momento da criação, prevenindo que o objeto exista em um estado inválido ou incompleto.
+
+#### O Construtor como Validador: Garantindo a Integridade dos Dados
+
+Vimos que o Construtor é um tipo especial de método que é executado automaticamente quando uma nova instância de objeto é criada usando a palavra-chave `new`.&#x20;
+
+Seu objetivo primordial é inicializar os atributos do objeto, recebendo parâmetros (dados) e definindo seus valores iniciais.
+
+No entanto, a utilidade do construtor vai além da mera atribuição de valores. Ele é o ponto de controle ideal para garantir que os dados fornecidos no momento da criação sejam **válidos**.
+
+**A Necessidade de Validação**
+
+Em nosso sistema de controle de veículos para a seguradora, um atributo fundamental é a `placa`. Se permitirmos que um objeto `Veiculo` seja criado com uma placa em formato incorreto ou inválido (como uma _string_ vazia ou fora dos padrões de trânsito), corremos o risco de gerar relatórios inconsistentes ou cálculos de seguro errados.
+
+Para evitar que a instância seja criada em um estado inválido, podemos embutir a lógica de validação diretamente no construtor.
+
+**Exemplo Prático: Validando a Placa de Trânsito**
+
+Vamos modificar a implementação do construtor da classe `Veiculo`. Antes de usar a autorreferência (`this`) para atribuir o valor do parâmetro `placaRecebida` ao atributo interno `this.placa`, implementaremos uma checagem.
+
+Neste exemplo, assumiremos (para fins didáticos) que uma placa válida deve ter exatamente 7 caracteres (o que simula um padrão de trânsito).
+
+{% code overflow="wrap" lineNumbers="true" %}
+```javascript
+class Veiculo {
+    modelo;
+    cor;
+    anoDeFabricacao;
+    placa;
+
+    // O construtor agora realiza uma validação
+    constructor(modeloRecebido, corRecebida, anoRecebido, placaRecebida) {
+
+        // --- SEÇÃO DE VALIDAÇÃO ---
+        const placa = placaRecebida.toUpperCase(); // Padroniza o formato
+
+        if (placa.length !== 7) {
+            // Se a validação falhar, lançamos um erro,
+            // impedindo que o objeto seja criado em estado inválido.
+            throw new Error(`A placa "${placaRecebida}" é inválida. Uma placa deve ter 7 caracteres.`);
+        }
+        // --------------------------
+
+        // Se a validação for bem-sucedida, inicializamos os atributos
+        this.modelo = modeloRecebido;
+        this.cor = corRecebida;
+        this.anoDeFabricacao = anoRecebido;
+        this.placa = placa; 
+    }
+    
+    // ... (Métodos como gerarRelatorio)
+}
+```
+{% endcode %}
+
+**Instanciação com Validação**
+
+Ao tentarmos instanciar um objeto agora, o construtor executa a lógica de validação antes de prosseguir com a inicialização:
+
+Dessa forma, o construtor atua como um **portão de segurança (ou&#x20;**_**guard clause**_**)**, assegurando que qualquer objeto instanciado a partir da classe `Veiculo` já comece sua existência com os dados essenciais (como a placa) em um formato coerente com as regras do negócio.
