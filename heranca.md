@@ -30,8 +30,6 @@ A Herança estabelece uma Hierarquia de Classes, onde a classe mais genérica es
 
 A classe `Veiculo` se torna a Classe Base ou Superclasse. As classes `Carro` e `Moto` se tornam as Classes Derivadas ou Subclasses, **especializando** o comportamento e os dados de `Veiculo`.
 
-\==IMAGEM SOBRE GENERALIZAÇÃO E ESPECIALIZAÇÃO==
-
 ```mermaid
 classDiagram
     direction TB
