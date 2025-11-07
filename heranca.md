@@ -38,4 +38,97 @@ A classe `Veiculo` se torna a Classe Base ou Superclasse. As classes `Carro` e `
 
 Para implementar a herança no JavaScript moderno (ES6+), utilizamos a palavra-chave **extends** na declaração da classe filha.
 
-**Utilizando a Classe Base `Veiculo`**
+**Utilizando a Classe Base `Veiculo`**&#x20;
+
+Relembramos a estrutura da nossa classe `Veiculo`, que usa o construtor para inicializar os atributos.
+
+{% code lineNumbers="true" %}
+```javascript
+class Veiculo {
+    modelo;
+    cor;
+    anoDeFabricacao;
+    placa;
+
+    constructor(modelo, cor, ano, placa) {/* implementação */}
+    gerarRelatorio() {/* implementação */}
+}
+```
+{% endcode %}
+
+**Especialização 1: Classe `Carro`**
+
+A classe `Carro` herda todas as características de `Veiculo`, mas adiciona o atributo específico `numeroDePortas`.
+
+Para garantir que a **inicialização** do `Veiculo` seja feita corretamente, o construtor da classe filha (`Carro`) deve chamar o construtor da classe pai (`Veiculo`) usando a palavra-chave `super()` .
+
+{% code lineNumbers="true" %}
+```javascript
+class Carro extends Veiculo {
+    // Atributo específico do Carro
+    numeroDePortas;
+
+    // O construtor do Carro recebe todos os parâmetros do Veiculo
+    // MAIS os parâmetros específicos (numeroDePortas).
+    constructor(modelo, cor, ano, placa, portas) {
+        
+        // 1. CHAMA O CONSTRUTOR PAI:
+        // 'super()' envia os parâmetros genéricos (Veiculo) ao construtor da classe Veiculo.
+        super(modelo, cor, ano, placa); 
+
+        // 2. INICIALIZA ATRIBUTOS PRÓPRIOS:
+        // Depois de chamar o super, inicializamos os atributos específicos do Carro.
+        this.numeroDePortas = portas;
+    }
+}
+```
+{% endcode %}
+
+Especialização 2: Classe `Moto`&#x20;
+
+A classe `Moto` também herda de `Veiculo`, mas adiciona o atributo `cilindrada`.
+
+```javascript
+class Moto extends Veiculo {
+    // Atributo específico da Moto
+    cilindrada; 
+
+    constructor(modelo, cor, ano, placa, cilindradaRecebida) {
+        
+        // 1. CHAMA O CONSTRUTOR PAI: 
+        super(modelo, cor, ano, placa); 
+
+        // 2. INICIALIZA ATRIBUTOS PRÓPRIOS:
+        this.cilindrada = cilindradaRecebida;
+    }
+}
+```
+
+**Testando a Hierarquia e o Reuso**
+
+Ao criarmos instâncias das classes especializadas, observamos o reuso em ação:
+
+{% code lineNumbers="true" %}
+```javascript
+// Instanciação de um Carro
+let meuCarro = new Carro("Corsa", "cinza", 2005, "ABC1234", 4);
+
+// O Carro utiliza o método herdado de Veiculo
+console.log(meuCarro.gerarRelatorio()); 
+/* 
+Resultado (herdado do Veiculo): 
+--- RELATÓRIO DO VEÍCULO ---
+Modelo: Corsa
+Cor: cinza
+Ano: 2005
+Placa: ABC1234
+*/
+
+// O Carro possui seu atributo especializado
+console.log(meuCarro.numeroDePortas); // Resultado: 4
+```
+{% endcode %}
+
+A instância de `Carro` conseguiu utilizar o método `gerarRelatorio()` que foi escrito apenas uma vez, na classe `Veiculo`, provando o reuso.
+
+O construtor garante o estado válido da parte `Veiculo` do objeto, enquanto o construtor da subclasse garante o estado válido da parte especializada (`Carro` ou `Moto`).
