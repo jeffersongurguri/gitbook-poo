@@ -114,6 +114,7 @@ Especialização 2: Classe `Moto`&#x20;
 
 A classe `Moto` também herda de `Veiculo`, mas adiciona o atributo `cilindrada`.
 
+{% code lineNumbers="true" %}
 ```javascript
 class Moto extends Veiculo {
     // Atributo específico da Moto
@@ -129,6 +130,7 @@ class Moto extends Veiculo {
     }
 }
 ```
+{% endcode %}
 
 **Testando a Hierarquia e o Reuso**
 
@@ -158,3 +160,41 @@ console.log(meuCarro.numeroDePortas); // Resultado: 4
 A instância de `Carro` conseguiu utilizar o método `gerarRelatorio()` que foi escrito apenas uma vez, na classe `Veiculo`, provando o reuso.
 
 O construtor garante o estado válido da parte `Veiculo` do objeto, enquanto o construtor da subclasse garante o estado válido da parte especializada (`Carro` ou `Moto`).
+
+### Nossas classes até aqui
+
+É fundamental consolidar visualmente todas as classes que foram desenvolvidas para o sistema de controle de veículos da seguradora, incluindo a hierarquia de herança e a interação.
+
+```mermaid
+classDiagram
+    direction LR
+    class Veiculo {
+        +modelo
+        +cor
+        +anoDeFabricacao
+        +placa
+        +constructor(modelo, cor, ano, placa)
+        +gerarRelatorio()
+    }
+    class Carro {
+        +numeroDePortas
+        +constructor(modelo, cor, ano, placa, portas)
+    }
+    class Moto {
+        +cilindrada
+        +constructor(modelo, cor, ano, placa, cilindrada)
+    }
+    class CalculadoraDeSeguro {
+        +calcularPremio(veiculo)
+    }
+    class GeradoraDeApolice {
+        +gerarApolice(veiculo, premio)
+    }
+    Veiculo <|-- Carro
+    Veiculo <|-- Moto
+    CalculadoraDeSeguro ..> Veiculo : utiliza/depende
+    GeradoraDeApolice ..> Veiculo : utiliza/depende
+
+```
+
+<figure><img src=".gitbook/assets/diagrama-de-classe-capitulo-reuso (1).png" alt=""><figcaption></figcaption></figure>
