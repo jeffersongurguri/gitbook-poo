@@ -196,5 +196,3 @@ classDiagram
     GeradoraDeApolice ..> Veiculo : utiliza/depende
 
 ```
-
-<figure><img src=".gitbook/assets/diagrama-de-classe-capitulo-reuso (1).png" alt=""><figcaption></figcaption></figure>
