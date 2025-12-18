@@ -48,19 +48,27 @@ Qual é a lógica aqui? Nós não precisamos redefinir que temos "coluna vertebr
 
 <figure><img src=".gitbook/assets/taxonomia-ilustracao-generalizacao-especializacao.png" alt="" width="375"><figcaption><p>Ilustração dos conceitos de Generalização e Especialização.</p></figcaption></figure>
 
+### Conceito de Herança (em POO)
+
 Até agora, definimos que uma Classe é uma estrutura que abstrai um conjunto de objetos com características similares. Por exemplo, a classe `Veiculo` possui atributos como `modelo`, `cor`, `anoDeFabricacao` e `placa`, e comportamentos como o método `gerarRelatorio()`.
 
 No entanto, no nosso sistema da seguradora, um `Carro` e uma `Moto` são, fundamentalmente, Veículos.
 
 &#x20;Eles compartilham as características básicas (modelo, cor, placa), mas também possuem características ou comportamentos específicos (um carro tem número de portas, uma moto pode ter a cilindrada).
 
-A **Herança** é o mecanismo da Programação Orientada a Objetos (POO) que permite que uma nova classe (chamada **subclasse** ou **classe filha**) **herde os atributos e métodos** de uma classe existente (chamada **superclasse** ou **classe pai**).
+> A **Herança** é o mecanismo da Programação Orientada a Objetos (POO) que permite que uma nova classe (chamada **subclasse** ou **classe filha**) **herde os atributos e métodos** de uma classe existente (chamada **superclasse** ou **classe pai**).
 
 Este conceito se baseia na relação "É-UM":
 
 • Um Carro _É-UM_ `Veiculo`.
 
 • Uma Moto _É-UM_ `Veiculo`.
+
+```mermaid
+classDiagram
+Veiculo <|-- Carro : É-UM
+Veiculo <|-- Moto : É-UM
+```
 
 ### A Importância da Herança: Reuso de Código
 
