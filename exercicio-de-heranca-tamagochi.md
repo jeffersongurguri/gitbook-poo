@@ -74,7 +74,7 @@ Crie um arquivo chamado `tamagotchi.js` e cole o código abaixo.
 
 JavaScript
 
-```
+```javascript
 /**
  * 🎮 TERMINAL-GOTCHI (Deno Version)
  * Autor: Bernardo & Gemini
