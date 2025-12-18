@@ -14,6 +14,18 @@ Essa mesma lógica de organização eficiente é a base da Programação Orienta
 
 A grande vantagem disso, tanto na natureza quanto no código, **é evitar a repetição**. Em vez de reescrevermos todos os atributos para cada novo tipo, utilizamos a herança para garantir o reuso de código, focando apenas no que é específico daquela nova "espécie" de objeto
 
+{% hint style="info" %}
+**O Princípio DRY (**_**Don't Repeat Yourself**_**)**
+
+A motivação técnica primária para o uso de herança é o princípio DRY (Não se repita).&#x20;
+
+
+
+Sabe aquela vontade de dar um "Ctrl+C / Ctrl+V" num pedaço de código para usar em outro lugar?&#x20;
+
+Cuidado! Isso geralmente viola o DRY. Se você tem a mesma lógica escrita em dois lugares diferentes, quando precisar consertar um bug, vai ter que lembrar de consertar nos dois lugares. Se esquecer de um, o sistema quebra.
+{% endhint %}
+
 {% hint style="success" %}
 **Curiosidade - Taxonomia Humana**
 
