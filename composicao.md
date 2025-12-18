@@ -86,7 +86,7 @@ Para não confundir as coisas, vamos colocar lado a lado com o que aprendemos na
 
 Assim como testamos a hierarquia instanciando um `Carro`, vamos ver como instanciar um objeto composto. O processo acontece em duas etapas: fabricar a peça e depois montar o veículo.
 
-```
+```js
 // 1. Criamos a peça (Instância de Motor)
 let motorPotente = new Motor("V8", "500cv");
 
