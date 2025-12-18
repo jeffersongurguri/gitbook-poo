@@ -10,3 +10,4 @@
 * [Herança](heranca.md)
 * [Composição](composicao.md)
 * [Interface](interface.md)
+* [Exercício de Herança (Tamagochi)](exercicio-de-heranca-tamagochi.md)
