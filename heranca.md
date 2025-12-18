@@ -76,7 +76,7 @@ Embora existam diversos mecanismos para evitar a repetição de lógica (como a 
 
 Imagine que a classe `Veiculo` possua dez atributos e cinco métodos (incluindo o construtor e o `gerarRelatorio()`). **Sem a herança**, ao criarmos a classe `Carro` e a classe `Moto`, **teríamos que reescrever todos esses quinze membros em cada nova classe**.
 
-Com a herança, a classe filha (como `Carro`) automaticamente ganha acesso a todos os atributos e métodos definidos na classe pai (`Veiculo`), precisando apenas implementar aquilo que é novo ou específico de sua especialização. Isso torna o código mais limpo, fácil de manter e mais consistente.
+Com a herança, a classe filha (como `Carro`) automaticamente ganha acesso a todos os atributos e métodos definidos na classe pai (`Veiculo`), **precisando apenas implementar aquilo que é novo ou específico de sua especialização**. Isso torna o código mais limpo, fácil de manter e mais consistente.
 
 ### Criação de uma Hierarquia de Classes
 
