@@ -1,8 +1,6 @@
 # Exercício de Herança (Tamagochi)
 
-Com certeza, Bernardo. O Tamagotchi é o exemplo perfeito porque ele conecta uma memória afetiva forte com a lógica fria da programação, tornando o aprendizado mais "palpável".
-
-Aqui está uma proposta de estruturação para a abertura da sua aula ou material didático, desenhada para capturar a atenção dos alunos logo de cara, seguida da implementação completa em Deno.
+<p align="center"><img src=".gitbook/assets/tamagochi.png" alt=""></p>
 
 ***
 
