@@ -8,13 +8,13 @@ Enquanto a Herança foca no que o objeto **É**, a Composição foca no que o ob
 
 • Herança: Relação _**É-UM**_ (Ex: Moto é um Veículo).
 
-• Composição: Relação _TEM-UM_ (Ex: Veículo _tem um_ Motor).
+• Composição: Relação _**TEM-UM**_ (Ex: Veículo _tem um_ Motor).
 
 Na Composição, construímos objetos complexos juntando objetos menores e mais simples, como peças de LEGO.
 
 **Por que usar Composição?**
 
-Nas notas sobre Herança, vimos que a vantagem principal é o reuso de código para evitar reescrever atributos comuns. A Composição também oferece reuso, mas com mais flexibilidade.
+Nas notas sobre Herança, vimos que a vantagem principal é o reuso de código para evitar reescrever atributos comuns. A **Composição também oferece reuso, mas com mais flexibilidade.**
 
 Imagine que queremos detalhar o motor dos nossos veículos. Poderíamos criar subclasses como `VeiculoMotorV8` ou `VeiculoEletrico`, mas isso criaria uma hierarquia gigante e confusa. Em vez disso, criamos uma classe `Motor` separada e fazemos com que o `Veiculo` utilize essa classe. Isso é uma associação de Classes, levada a um nível estrutural.
 
