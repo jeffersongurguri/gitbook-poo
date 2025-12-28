@@ -12,3 +12,4 @@
 * [Composição](composicao.md)
 * [Aprofundando a Herança](aprofundando-a-heranca.md)
 * [Interfaces por outro ângulo](interfaces-por-outro-angulo.md)
+* [Avaliação de POO - N2](avaliacao-de-poo-n2.md)
